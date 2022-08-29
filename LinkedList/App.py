@@ -1,6 +1,5 @@
 from LinkedList import LinkedList
 
-
 linkList = LinkedList()
 linkList.insertEnd(12)
 linkList.insertEnd(30)
