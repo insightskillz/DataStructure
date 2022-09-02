@@ -1,11 +1,6 @@
-import sys
-
-class Node(object):
+class Vertex(object):
     def __init__(self, name):
         self.name = name
         self.visited = False
-        self.adjacentList = []
         self.predecessor = None
-        self.minDistance = sys.maxsize
-
-
+        self.adjacentList = []

@@ -4,9 +4,9 @@ class Algorithm(object):
         queue = []
         startVertex.minDistance = 0
         heapq.heappush(queue, startVertex)
-        while len(queue)>0:
-            actualVertex = heapq.heappop(queue)
 
+        while len(queue) > 0:
+            actualVertex = heapq.heappop(queue)
             for edge in actualVertex.adjacentList:
                 u = edge.startVertex
                 v = edge.targetVertex
@@ -17,10 +17,12 @@ class Algorithm(object):
                     v.minDistance = newDistance
                     heapq.heappush(queue, v)
 
-
-    def getShortestPathTo(self, targetVertex):
+    def getShortextPathTo(self, targetVertex):
         print("Shortest path to target is:", targetVertex.minDistance)
+
         node = targetVertex
+
         while node is not None:
-            print("%s -> " % node.name)
-            node= node.predecessor
+            print("%s ->" % node.name)
+            node = node.predecessor
+

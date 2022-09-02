@@ -42,7 +42,9 @@ class Stack(object):
             raise IndexError
         return self.head.getData()
 
-our_list = ["First", "second", "Third", "Fourht"]
+our_list = ["First", "second", "Third", "Fourth"]
 our_stack = Stack(our_list)
+print(our_stack.pop())
+print(our_stack.pop())
 print(our_stack.pop())
 print(our_stack.pop())

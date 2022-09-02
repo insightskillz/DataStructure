@@ -8,24 +8,25 @@ class Queue(object):
 
     def isEmpty(self):
         return self.size <= 0
+
     def enQueue(self, item):
         if self.size >= self.limit:
-            print("Queue Overflow")
+            print("Queue Overflow!")
             return
+
         else:
             self.que.append(item)
 
         if self.front is None:
             self.front = self.rear = 0
-
         else:
-            self.rear = self.size
+            self.rear = self.__sizeof__()
         self.size += 1
         print("Queue after enQueue", self.que)
 
     def deQueue(self):
         if self.size <= 0:
-            print("Queue Underflow")
+            print("Queue Underflow!")
             return 0
         else:
             self.que.pop(0)
@@ -36,29 +37,25 @@ class Queue(object):
                 self.rear = self.size-1
                 print("Queue after deQueue", self.que)
 
-
     def queueRear(self):
         if self.rear is None:
             print("Sorry, the queue is empty!")
             raise IndexError
-        return self.que[self.rear]
+        return  self.que[self.rear]
 
     def queueFront(self):
         if self.front is None:
-            print("Sorry, the queue is empty!")
+            print("Soory, the queue is empty")
             raise IndexError
         return self.que[self.front]
-
     def size(self):
-        return self.size
+        return self.size()
 
 que = Queue()
-que.enQueue("first")
-print("Front" + que.queueFront())
+que.enQueue("First")
+print("Front" +que.queueFront())
 print("Rear" +que.queueRear())
-que.enQueue("second")
-print("Front:" +que.queueFront())
-print("Rear" +que.queueRear())
+print("Front" +que.queueRear())
 que.deQueue()
-print("Front:" +que.queueFront())
+print("Front" +que.queueFront())
 print("Rear" +que.queueRear())

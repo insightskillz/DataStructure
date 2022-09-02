@@ -1,9 +1,10 @@
 class Algorithm(object):
-    HAS_CYCLE= False
+    HAS_CYCLE = False
 
-    def calculateShortesPart(self, vertextList,  edgeList, startVertex):
+    def calculateShortestPath(self, vertexList, edgeList, startVertex):
         startVertex.minDistance = 0
-        for i in range(0, len(vertextList)-1):
+
+        for i in range(0, len(vertexList)-1):
             for edge in edgeList:
                 u = edge.startVertex
                 v = edge.targetVertex
@@ -11,13 +12,29 @@ class Algorithm(object):
 
                 if newDistance < v.minDistance:
                     v.minDistance = newDistance
-                    v.predecesor = u
+                    v.predecessor = u
 
-        for edge in edgeList:
-            if self.hasCycle(edge):
-                print("Negative cycle detected...")
-                Algorithm.HAS_CYCLE = True
-                return
+
+            for edge in edgeList:
+                if self.hasCycle(edge):
+                    print("Negative cycle detected ...")
+                    Algorithm.HAS_CYCLE = True
+                    return
+    def hasCycle(self, edge):
+        if (edge.startVertex.minDistance + edge.weight) < edge.targetVertex.minDistance:
+            return True
+        else:
+            return False
+
+    def getShortestPartTo(self, targetVertex):
+        if not Algorithm.HAS_CYCLE:
+            print("Shortest path to ", targetVertex.minDistance)
+            node = targetVertex
+            while node is not None:
+                print("%s -> " % node.name)
+                node = node.predecessor
+
+
 
 
 
